@@ -57,7 +57,7 @@ To use this plugin, you need
    ```
   $config['plugins'] = array(
 	...
-	'syncgw_roundcube',
+	'roundcube-syncgw',
 	[the other optional plugins]
 	...
   );
@@ -66,7 +66,7 @@ To use this plugin, you need
 **Usage**
 
 * Go to menu `Settings` and configure synchronization settings by selecting `Synchronization settings`.If this selection does not appear, then you did not install **sync•gw** in RoundCube root directory.
-* Now you're ready to synchronize your selected data with your cell phone / smart phone. If you need some help how to configure you device, take a look a [sync•gw FAQ](https://github.com/toteph42/syncgw/blob/master/downloads/FAQ.md).
+* Now you're ready to synchronize your selected data with your cell phone / smart phone. If you need some help how to configure you device, take a look a [sync•gw FAQ](https://github.com/syncgw/doc-bundle/blob/master/FAQ.md).
 
 Please enjoy!
 
