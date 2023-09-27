@@ -1,0 +1,6 @@
+#sections-table #rcmrowselect_for_sync_pref .section {
+	background: url(images/logo.png) 5px 2px no-repeat transparent;
+}
+#sections-table #rcmrowselect_for_sync_pref.selected .section {
+	background: url(images/logo.png) 5px 2px no-repeat transparent;
+}
