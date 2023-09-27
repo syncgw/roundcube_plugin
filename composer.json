@@ -14,9 +14,9 @@
 	],
 	"require" : {
 		"php" : ">=8.1",
-		"syncgw/core-bundle" : "*",
-		"syncgw/gui-bundle" : "*",
-		"syncgw/mysql-bundle" : "*"
+		"syncgw/core-bundle" : ">=9.19.78",
+		"syncgw/gui-bundle" : ">=9.19.78",
+		"syncgw/mysql-bundle" : ">=9.19.78"
 	},
 	"autoload" : {
 		"psr-4" : {
