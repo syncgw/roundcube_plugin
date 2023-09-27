@@ -11,7 +11,7 @@
 This data base handler includes the MySQL data base handler mentioned above. Additionally this interface handler synchronizes data (e.g. **contact** records) from RoundCube with **sync•gw** internal records. Your application users can always access most current data.
 
 ## Installation ##
-To install the **sync•gw mysql bundle** please go to your web server base directory and enter
+To install the **sync•gw RoundCube bundle** please go to your web server base directory and enter
 
 ```bash
 composer require syncgw/roundcube-bundle
