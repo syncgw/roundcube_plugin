@@ -1,0 +1,31 @@
+{
+	"name" : "syncgw/roundcube-bundle",
+	"license": "LGPL-3.0-or-later",
+	"homepage" : "https://github.com/syncgw/file-bundle",
+	"authors" : [{
+			"name" : "Florian Daeumling",
+			"homepage" : "https://github.com/toteph42"
+		}
+	],
+	"funding" : [{
+			"type" : "other",
+			"url" : "https://www.paypal.com/donate/?hosted_button_id=DS6VK49NAFHEQ"
+		}
+	],
+	"require" : {
+		"php" : ">=8.1",
+		"syncgw/core-bundle" : "*",
+		"syncgw/gui-bundle" : "*",
+		"syncgw/mysql-bundle" : "*"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"syncgw\\interface\\roundcube\\" : "src/"
+		}
+	},
+	"support" : {
+		"issues" : "https://github.com/syncgw/syncgw/issues",
+		"source" : "https://github.com/syncgw/roundcube-bundle",
+		"docs" : "https://github.com/syncgw-bundle"
+	}
+}
