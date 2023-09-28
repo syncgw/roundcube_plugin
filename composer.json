@@ -24,7 +24,7 @@
 		}
 	},
 	"support" : {
-		"issues" : "https://github.com/syncgw/core-bundle/issues",
+		"issues" : "https://github.com/syncgw/syncgw/issues",
 		"source" : "https://github.com/syncgw/roundcube-bundle",
 		"docs" : "https://github.com/syncgw/doc-bundle"
 	}
