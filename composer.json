@@ -1,5 +1,6 @@
 {
 	"name" : "syncgw/roundcube-bundle",
+	"description" : "sync•gw RoundCube bundle.",
 	"license" : "LGPL-3.0-or-later",
 	"homepage" : "https://github.com/syncgw/file-bundle",
 	"authors" : [{
