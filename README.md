@@ -57,7 +57,7 @@ To use this plugin, you need
    ```
   $config['plugins'] = array(
 	...
-	'roundcube-syncgw',
+	'roundcube-plugin',
 	[the other optional plugins]
 	...
   );
