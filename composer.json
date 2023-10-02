@@ -37,8 +37,8 @@
 	],
 	"support" : {
 		"issues" : "https://github.com/syncgw/syncgw/issues",
-		"source" : "https://github.com/syncgw/roundcube-plugin",
-		"docs": "https://github.com/syncgw/roundcube-plugin"
+		"source" : "https://github.com/syncgw/syncgw-plugin",
+		"docs": "https://github.com/syncgw/syncgw-plugin"
 	},
 	"require" : {
 		"php" : ">=8.1",
