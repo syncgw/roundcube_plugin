@@ -6,7 +6,7 @@
  
 **sync•gw** is the one and only fully portable server software available providing synchronization service between nearly any mobile device and your web server.
 
-## roundcube-syncgw bundle ##
+## roundcube-plugin bundle ##
 
 With this Plugin you can specify in your [RoundCube](https://roundcube.net) installation which address books, calendars, task lists and notes you want to synchronize with your cell phone / smart phone. For address boks you can specify whether you want to synchronize only contacts with a phone number specified or if you want to synchronize all contacts within this address book.
 
