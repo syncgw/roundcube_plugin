@@ -12,16 +12,14 @@ With this Plugin you can specify in your [RoundCube](https://roundcube.net) inst
 
 **Requirements**
 
-To use this plugin, you need
-
-* A functional [RoundCube](https://roundcube.net) installation.
-* [sync•gw](https://github.com/syncgw) installed and configured in RoundCube root directory.
+To use this plugin, you need a functional [RoundCube](https://roundcube.net) installation.
 
 **Installation**
-* Please install [sync•gw plugin](https://github.com/syncgw/roundcube-syncgw).
+
+* Please install [sync•gw plugin](https://github.com/syncgw/roundcube-plugin).
 
    ```
-  composer require syncgw/roundcube-syncgw
+  composer require syncgw/roundcube-plugin
    ```
 
 * If you want to synchronize address books, then you don't need any additional RoundCube plugin.
@@ -62,8 +60,16 @@ To use this plugin, you need
 	...
   );
    ```
+* Finally you need the **sync•gw** synchwonization and GUI interface. Please go to your RoundCube installation
+directoy and copy the file 
+
+   ```
+   copy (or cp) vendor\syncgw\core-bundle\src\sync.php .
+   ```
 	
 **Usage**
+
+* Start **sync•gw** web interface by typing into your browser's URL bar `http://[your-domain.tld]/[path to application directory]/sync.php`.
 
 * Go to menu `Settings` and configure synchronization settings by selecting `Synchronization settings`.If this selection does not appear, then you did not install **sync•gw** in RoundCube root directory.
 * Now you're ready to synchronize your selected data with your cell phone / smart phone. If you need some help how to configure you device, take a look a [sync•gw FAQ](https://github.com/syncgw/doc-bundle/blob/master/FAQ.md).
@@ -79,4 +85,3 @@ Please enjoy!
 [[List of all changes](https://github.com/syncgw/doc-bundle/blob/master/Changes.md)] 
 [[Additional Downloads](https://github.com/syncgw/doc-bundle/blob/master/Downloads.md)] 
 [[Frequently asked questions](https://github.com/syncgw/doc-bundle/blob/master/FAQ.md)] 
-[[Supported feature](https://github.com/syncgw/doc-bundle/blob/master/Features.md)]
