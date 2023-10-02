@@ -31,4 +31,3 @@ If you enjoy my software, I would be happy to receive a donation.
 [[List of all changes](https://github.com/syncgw/doc-bundle/blob/master/Changes.md)] 
 [[Additional Downloads](https://github.com/syncgw/doc-bundle/blob/master/Downloads.md)] 
 [[Frequently asked questions](https://github.com/syncgw/doc-bundle/blob/master/FAQ.md)] 
-[[Supported feature](https://github.com/syncgw/doc-bundle/blob/master/Features.md)]

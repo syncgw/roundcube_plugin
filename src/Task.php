@@ -172,11 +172,10 @@ class Task {
 	 * 	Collect information about class
 	 *
 	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
-	 */
-	public function getInfo(XML &$xml, bool $status): void {
+ 	 */
+	public function getInfo(XML &$xml): void {
 
-		$xml->addVar('Opt',sprintf('RoundCube %s handler', Util::HID(Util::HID_ENAME, DataStore::TASK)));
+		$xml->addVar('Name',sprintf('RoundCube %s handler', Util::HID(Util::HID_ENAME, DataStore::TASK)));
 
 		// check plugin version
 		foreach (self::PLUGIN as $name => $ver) {
@@ -184,7 +183,7 @@ class Task {
 			$i = $this->_hd->RCube->plugins->get_info($name);
 			$a = $this->_hd->RCube->plugins->active_plugins;
 			$xml->addVar('Opt', '<a href="https://plugins.roundcube.net/#/packages/kolab/'.$name.'" target="_blank">'.$name.'</a> '.
-					      ' plugin v'.$ver);
+					      ' plugin');
 			if (!in_array($name, $a)) {
 
 				ErrorHandler::resetReporting();
@@ -195,30 +194,27 @@ class Task {
 				$xml->addVar('Stat', sprintf('+++ ERROR: Require plugin version "%s" - "%s" found!',
 							  $ver, $i['version']));
 			} else
-				$xml->addVar('Stat', 'Implemented');
+				$xml->addVar('Stat', 'v'.$ver);
 		}
 
-		if ($status) {
+		$xml->addVar('Opt', 'Checking \'tasklist\' data base layout');
+		$dir = $this->_cnf->getVar(Config::RC_DIR).'/plugins/tasklist/drivers/database/SQL/mysql';
 
-			$xml->addVar('Opt', 'Checking \'tasklist\' data base layout');
-			$dir = $this->_cnf->getVar(Config::RC_DIR).'/plugins/tasklist/drivers/database/SQL/mysql';
+		if (!file_exists($dir) || !is_dir($dir) || !($h = opendir($dir)))
+    		$xml->addVar('Stat', sprintf('+++ ERROR: Cannot find \'%s\'!', $dir));
 
-			if (!file_exists($dir) || !is_dir($dir) || !($h = opendir($dir)))
-	    		$xml->addVar('Stat', sprintf('+++ ERROR: Cannot find \'%s\'!', $dir));
+		$ver = '';
+		while($file = readdir($h)) {
 
-			$ver = '';
-			while($file = readdir($h)) {
-
-				if ($file != '.' && $file != '..' && $file > $ver)
-				    $ver = $file;
-			}
-			closedir($h);
-
-			if ($ver != ($v = '2021102600.sql'))
-	    		$xml->addVar('Stat', sprintf('+++ ERROR: Should be \'%s\' - is \'%s\'!', $v, $ver));
-    		else
-    			$xml->addVar('Stat', 'Passed');
+			if ($file != '.' && $file != '..' && $file > $ver)
+			    $ver = $file;
 		}
+		closedir($h);
+
+		if ($ver != ($v = '2021102600.sql'))
+    		$xml->addVar('Stat', sprintf('+++ ERROR: Should be \'%s\' - is \'%s\'!', $v, $ver));
+   		else
+   			$xml->addVar('Stat', 'Passed');
 	}
 
 	/**

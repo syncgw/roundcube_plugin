@@ -57,7 +57,7 @@ class Handler extends \syncgw\interface\mysql\Handler implements DBextHandler {
 	const REFS        	 = 'References';					// file reference
 	const CID         	 = 'Category';						// record category
 
-	const PLUGIN      	 = [ 'syncgw_rc', '1.0.1' ];
+	const PLUGIN      	 = [ 'roundcube_plugin', '9.18.78' ];
 
 	// constants from roundcube_select_for_sync.php
 	const MAIL_FULL   	 = 'M';								// full mail box
@@ -161,13 +161,13 @@ class Handler extends \syncgw\interface\mysql\Handler implements DBextHandler {
 		    // check file names
 		    if (!file_exists($ini = $path.'program/include/iniset.php')) {
 
-		        Log::getInstance->logMsg(Log::ERR, 20301, $ini);
+		        Log::getInstance()->logMsg(Log::ERR, 20301, $ini);
 		        ErrorHandler::resetReporting();
  		        return self::$_obj;
 		    }
 		    if (!file_exists($mail = $path.'program/include/rcmail.php')) {
 
-		        Log::getInstance->logMsg(Log::ERR, 20301, $mail);
+		        Log::getInstance()->logMsg(Log::ERR, 20301, $mail);
 		        ErrorHandler::resetReporting();
  		        return self::$_obj;
 		    }
@@ -178,7 +178,7 @@ class Handler extends \syncgw\interface\mysql\Handler implements DBextHandler {
 	            $i = INSTALL_PATH . 'program/include/'.$i;
 	            if (!set_include_path($i)) {
 
-		        	Log::getInstance->logMsg(Log::ERR, 20352);
+		        	Log::getInstance()->logMsg(Log::ERR, 20352);
 		       		return self::$_obj;
 	            }
 			}
@@ -193,11 +193,14 @@ class Handler extends \syncgw\interface\mysql\Handler implements DBextHandler {
 			// get instance
 			self::$_obj->RCube = rcmail::get_instance();
 
+	        // initialize parent handler
+	        self::$_obj->_hd[DataStore::SYSTEM] = parent::getInstance();
+
 			// check main plugin
 			if ((!$a = self::$_obj->RCube->plugins->get_info(self::PLUGIN[0])) ||
-				($a['version'] != 'dev-master' && version_compare(self::PLUGIN[1], $a['version']) > 0)) {
+				version_compare(self::PLUGIN[1], $a['version']) > 0) {
 
-	        	Log::getInstance->logMsg(Log::WARN, 20302, self::PLUGIN[0]);
+	        	Log::getInstance()->logMsg(Log::WARN, 20302, self::PLUGIN[0]);
 		        ErrorHandler::resetReporting();
  	        	return self::$_obj;
 	    	}
@@ -226,13 +229,10 @@ class Handler extends \syncgw\interface\mysql\Handler implements DBextHandler {
 				if (!(self::$_obj->_hd[$hid] = $class::getInstance(self::$_obj))) {
 
 					unset(self::$_obj->_hd[$hid]);
-	       	   		Log::getInstance->logMsg(Log::WARN, 20302, Util::HID(Util::HID_ENAME, $hid));
+	       	   		Log::getInstance()->logMsg(Log::WARN, 20302, Util::HID(Util::HID_ENAME, $hid));
 					Msg::InfoMsg('Enabling data store handler "'.$file.'"');
 				}
 	        }
-
-	        // initialize parent handler
-	        self::$_obj->_hd[DataStore::SYSTEM] = parent::getInstance();
 
 			// register shutdown function
 			Server::getInstance()->regShutdown(__CLASS__);
@@ -264,60 +264,50 @@ class Handler extends \syncgw\interface\mysql\Handler implements DBextHandler {
 	 * 	Collect information about class
 	 *
 	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
-	 */
-	public function getInfo(XML &$xml, bool $status): void {
+  	 */
+	public function getInfo(XML &$xml): void {
 
-		$n = 'RoundCube data base handler ';
-		$xml->addVar('Name', $n);
+		$xml->addVar('Name', 'RoundCube data base handler');
 
-		$class = '\\syncgw\\interface\\roundcube\\Admin';
-		$class = $class::getInstance();
-		$class->getInfo($xml, $status);
+		$xml->addVar('Opt', 'RoundCube');
+		$xml->addVar('Stat',  'v'.RCMAIL_VERSION);
 
-		if (!$status) {
+		$xml->addVar('Opt', 'Status');
+		if (($be = $this->_cnf->getVar(Config::DATABASE)) == 'roundcube')
+			$xml->addVar('Stat', 'Enabled');
+		elseif ($be == 'mail')
+			$xml->addVar('Stat', 'Sustentative');
+		else {
 
-			$xml->addVar('Opt', 'RoundCube v'.RCMAIL_VERSION);
-			$xml->addVar('Stat', 'Implemented');
-		} else {
-
-			$xml->addVar('Opt', 'Status');
-			if (($be = $this->_cnf->getVar(Config::DATABASE)) == 'roundcube')
-				$xml->addVar('Stat', 'Enabled');
-			elseif ($be == 'mail')
-				$xml->addVar('Stat', 'Sustentative');
-			else {
-
-				$xml->addVar('Stat', 'Disabled');
-				return;
-			}
-
-			$xml->addVar('Opt', 'Application root directory');
-			$p = $this->_cnf->getVar(Config::RC_DIR);
-			if (!file_exists($p.'/program')) {
-
-				$xml->addVar('Stat', '+++ ERROR: Base directory not found!');
-				returnn;
-			}
-			$xml->addVar('Stat', '"'.$p.'"');
-
-			$xml->addVar('Opt', 'Connected to RoundCube');
-			$xml->addVar('Stat', (count($this->_hd) ? 'v'.' '.RCMAIL_VERSION : 'n/a'));
-
-			$xml->addVar('Opt', 'Interface handler handler');
-			if (!count($this->_hd)) {
-
-				$xml->addVar('Stat', '+++ ERROR: Initialization failed!');
-				return;
-			}
-			$xml->addVar('Stat', 'Initialized');
+			$xml->addVar('Stat', 'Disabled');
+			return;
 		}
+
+		$xml->addVar('Opt', 'Application root directory');
+		$p = $this->_cnf->getVar(Config::RC_DIR);
+		if (!file_exists($p.'/program')) {
+
+			$xml->addVar('Stat', '+++ ERROR: Base directory not found!');
+			returnn;
+		}
+		$xml->addVar('Stat', '"'.$p.'"');
+
+		$xml->addVar('Opt', 'Connected to RoundCube located in');
+		$xml->addVar('Stat', (count($this->_hd) ? 'v'.' '.RCMAIL_VERSION : 'n/a'));
+
+		$xml->addVar('Opt', 'Interface handler');
+		if (!count($this->_hd)) {
+
+			$xml->addVar('Stat', '+++ ERROR: Initialization failed!');
+			return;
+		}
+		$xml->addVar('Stat', 'Initialized');
 
 		$p = self::PLUGIN[0];
 		$i = $this->RCube->plugins->get_info($p);
 		$a = $this->RCube->plugins->active_plugins;
-		$xml->addVar('Opt', '<a href="https://plugins.roundcube.net/#/packages/syncgw/roundcube-select_for_sync" target="_blank">'.$p.'</a> '.
-				      ' plugin v'.self::PLUGIN[1]);
+		$xml->addVar('Opt', '<a href="https://plugins.roundcube.net/#/packages/syncgw/roundcube-plugin" '.
+					 'target="_blank">'.$p.'</a> plugin');
 		if (!in_array($p, $a)) {
 
 			ErrorHandler::resetReporting();
@@ -328,13 +318,13 @@ class Handler extends \syncgw\interface\mysql\Handler implements DBextHandler {
 			$xml->addVar('Stat', sprintf('+++ ERROR: Require plugin version "%s" - "%s" found!',
 						  self::PLUGIN[1], $i['version']));
 		} else
-			$xml->addVar('Stat', 'Implemented');
+			$xml->addVar('Stat', 'v'.self::PLUGIN[1]);
 
 		// get handler info
 		foreach ($this->_hd as $hd => $obj) {
 
 			if (is_object(($obj)) && $hd != DataStore::SYSTEM)
-				$obj->getInfo($xml, $status);
+				$obj->getInfo($xml);
 		}
 
 		ErrorHandler::resetReporting();

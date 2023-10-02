@@ -17,7 +17,6 @@ use rcube_db;
 use syncgw\lib\Config;
 use syncgw\lib\DataStore;
 use syncgw\lib\ErrorHandler;
-use syncgw\lib\XML;
 use syncgw\gui\guiHandler;
 
 class Admin extends \syncgw\interface\mysql\Admin implements DBAdmin {
@@ -39,17 +38,6 @@ class Admin extends \syncgw\interface\mysql\Admin implements DBAdmin {
             self::$_obj = new self();
 
 		return self::$_obj;
-	}
-
-    /**
-	 * 	Collect information about class
-	 *
-	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
-	 */
-	public function getInfo(XML &$xml, bool $status): void {
-
-		$xml->addVar('Opt', 'RoundCube administration handler');
 	}
 
 	/**

@@ -224,19 +224,18 @@ class Calendar {
 	 * 	Collect information about class
 	 *
 	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
 	 */
-	public function getInfo(XML &$xml, bool $status): void {
+	public function getInfo(XML &$xml): void {
 
-		$xml->addVar('Opt',sprintf('RoundCube %s handler', Util::HID(Util::HID_ENAME, DataStore::CALENDAR)));
+		$xml->addVar('Name',sprintf('RoundCube %s handler', Util::HID(Util::HID_ENAME, DataStore::CALENDAR)));
 
 		// check plugin version
 		foreach (self::PLUGIN as $name => $ver) {
 
 			$i = $this->_hd->RCube->plugins->get_info($name);
 			$a = $this->_hd->RCube->plugins->active_plugins;
-			$xml->addVar('Opt', '<a href="https://plugins.roundcube.net/#/packages/kolab/'.$name.'" target="_blank">'.$name.'</a> '.
-					      ' plugin v'.$ver);
+			$xml->addVar('Opt', '<a href="https://plugins.roundcube.net/#/packages/kolab/'.$name.'" '.
+						 'target="_blank">'.$name.'</a>  plugin');
 			if (!in_array($name, $a)) {
 
 				ErrorHandler::resetReporting();
@@ -247,7 +246,7 @@ class Calendar {
 				$xml->addVar('Stat', sprintf('+++ ERROR: Require plugin version "%s" - "%s" found!',
 							  $ver, $i['version']));
 			} else
-				$xml->addVar('Stat', 'Implemented');
+				$xml->addVar('Stat', 'v'.$ver);
 		}
 	}
 
