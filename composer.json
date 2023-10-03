@@ -37,7 +37,8 @@
 		},
 		{
 			"type" : "composer",
-			"url" : "https://repo.packagist.org"
+			"url" : "https://repo.packagist.org",
+			"include" : [ "composer/composer" ]
 		}
 	],
 	"support" : {
