@@ -30,9 +30,14 @@
 		"cell phone",
 		"roundcube"
 	],
-	"repositories" : [{
+	"repositories" : [
+		{
 			"type" : "composer",
 			"url" : "http://plugins.roundcube.net"
+		},
+		{
+			"type" : "composer",
+			"url" : "https://repo.packagist.org"
 		}
 	],
 	"support" : {
