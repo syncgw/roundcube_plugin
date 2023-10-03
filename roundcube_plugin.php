@@ -82,10 +82,10 @@ class roundcube_plugin extends rcube_plugin {
         $prefs = $this->rc->user->get_prefs();
         $prefs = $prefs['syncgw'];
 
-        if (!file_exists($path = Config::getInstance()->getVar(Config::ROOT).'/core-bundle/assets/core/'.Config::CONFIG))
+        if (!file_exists($path = Config::getInstance()->getVar(Config::ROOT).'core-bundle/assets/'.Config::CONFIG))
    		 	return;
 
-        $enabled = @parse_ini_file($path);
+   		$enabled = @parse_ini_file($path);
 
 		if ($enabled['Datastores'] & DataStore::MAIL) {
 
