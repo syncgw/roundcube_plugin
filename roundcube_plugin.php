@@ -39,7 +39,8 @@ class roundcube_plugin extends rcube_plugin {
 	 * 	@see rcube_plugin::init()
 	 */
 	function init() {
-        $this->add_texts('localization/', false);
+
+		$this->add_texts('localization/', false);
 
 		$this->include_stylesheet($this->local_skin_path().'/plugin.css');
 
@@ -82,7 +83,8 @@ class roundcube_plugin extends rcube_plugin {
         $prefs = $this->rc->user->get_prefs();
         $prefs = $prefs['syncgw'];
 
-        if (!file_exists($path = Config::getInstance()->getVar(Config::ROOT).'core-bundle/assets/'.Config::CONFIG))
+        $cnf = Config::getInstance();
+        if (!file_exists($path = $cnf->Path))
    		 	return;
 
    		$enabled = @parse_ini_file($path);

@@ -6,7 +6,7 @@
  
 **sync•gw** is the one and only fully portable server software available providing synchronization service between nearly any mobile device and your web server.
 
-## roundcube-plugin bundle ##
+## roundcube_plugin bundle ##
 
 With this Plugin you can specify in your [RoundCube](https://roundcube.net) installation which address books, calendars, task lists and notes you want to synchronize with your cell phone / smart phone. For address boks you can specify whether you want to synchronize only contacts with a phone number specified or if you want to synchronize all contacts within this address book.
 
@@ -16,10 +16,10 @@ To use this plugin, you need a functional [RoundCube](https://roundcube.net) ins
 
 **Installation**
 
-* Please install [sync•gw plugin](https://github.com/syncgw/roundcube-plugin).
+* Please install [sync•gw plugin](https://github.com/syncgw/roundcub_plugin).
 
    ```
-  composer require syncgw/roundcube-plugin
+  composer require syncgw/roundcube_plugin
    ```
 
 * If you want to synchronize address books, then you don't need any additional RoundCube plugin.
@@ -55,18 +55,19 @@ To use this plugin, you need a functional [RoundCube](https://roundcube.net) ins
    ```
   $config['plugins'] = array(
 	...
-	'roundcube-plugin',
+	'roundcube_plugin',
 	[the other optional plugins]
 	...
   );
    ```
-* Finally you need the **sync•gw** synchwonization and GUI interface. Please go to your RoundCube installation
+   
+* Finally you need the **sync•gw** synchonization and GUI interface. Please go to your RoundCube installation
 directoy and copy the file 
 
    ```
    copy (or cp) vendor\syncgw\core-bundle\src\sync.php .
    ```
-	
+
 **Usage**
 
 * Start **sync•gw** web interface by typing into your browser's URL bar `http://[your-domain.tld]/[path to application directory]/sync.php`.
