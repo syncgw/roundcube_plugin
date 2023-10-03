@@ -41,7 +41,7 @@
 			"url" : "https://repo.packagist.org",
 			"include" : [ 
 				"syncgw/roundcube-plugin",
-				"composer/composer" 
+				"syncgw/core-bundle" 
 			]
 		}
 	],
