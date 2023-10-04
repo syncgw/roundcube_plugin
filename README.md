@@ -75,6 +75,12 @@ directoy and copy the file
 * Go to menu `Settings` and configure synchronization settings by selecting `Synchronization settings`.If this selection does not appear, then you did not install **sync•gw** in RoundCube root directory.
 * Now you're ready to synchronize your selected data with your cell phone / smart phone. If you need some help how to configure you device, take a look a [sync•gw FAQ](https://github.com/syncgw/doc-bundle/blob/master/FAQ.md).
 
+**Trouble shooting hints**
+
+* If you don't see any **sync•gw** logo, then you may probably need to modify ``.htacess`` file: Open file and search for ``RewriteRule ... vendor| ...``. Remove ``vendor|`` from that line and save file and try calling **sync•gw** again. 
+
+* When 
+
 Please enjoy!
 
 |  <a href="https://www.paypal.com/donate/?hosted_button_id=DS6VK49NAFHEQ" target="_blank" rel="noopener">   <img src="https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif" alt="Donate with PayPal"/> </a> | 
