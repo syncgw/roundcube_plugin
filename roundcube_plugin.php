@@ -81,7 +81,7 @@ class roundcube_plugin extends rcube_plugin {
 		    return $args;
 
         $prefs = $this->rc->user->get_prefs();
-        $prefs = $prefs['syncgw'];
+        $prefs = isset($prefs['syncgw']) ? $prefs['syncgw'] : '';
 
         $cnf = Config::getInstance();
         if (!file_exists($path = $cnf->Path))
