@@ -12,11 +12,27 @@ With this Plugin you can specify in your [RoundCube](https://roundcube.net) inst
 
 **Requirements**
 
-To use this plugin, you need a functional [RoundCube](https://roundcube.net) installation.
+To use this plugin, you need a functional [RoundCube](https://roundcube.net) installation. To enable some post installation scrips you need to edit your `composer.json` file and add somewhere the following lines of code
+
+   ```
+	"scripts": {
+        "post-package-install" : [
+            "syncgw\\lib\\Setup::postInstall"
+        ],
+        "post-package-update" : [
+            "syncgw\\lib\\Setup::postInstall"
+        ],
+		"post-package-uninstall" : [
+            "syncgw\\lib\\Setup::postUninstall"
+		]
+    }
+   ```
+
+This script links `vendor/syncgw/core-bundle/src/sync.php` to `sync.php` which is the script used for synchronization and configuration of **sync•gw**.
 
 **Installation**
 
-* Please install [sync•gw plugin](https://github.com/syncgw/roundcub_plugin).
+* Please install [sync•gw plugin](https://github.com/syncgw/roundcube_plugin).
 
    ```
   composer require syncgw/roundcube_plugin
