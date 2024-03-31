@@ -34,8 +34,7 @@
 	"repositories" : [
 		{
 			"type" : "composer",
-			"url" : "http://plugins.roundcube.net",
-			"canonical" : false
+			"url" : "http://plugins.roundcube.net"
 		}
 	],
 	"support" : {
@@ -55,8 +54,7 @@
 	},
 	"extra" : {
 		"roundcube" : {
-			"min-version" : "0.6.0",
-			"max-version" : "10.21",
+			"min-version" : "1.6",
 			"sql-dir" : "SQL"
 		}
 	}
