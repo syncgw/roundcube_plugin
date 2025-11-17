@@ -6,7 +6,7 @@ declare(strict_types=1);
  *
  *	@package	sync*gw
  *	@subpackage	RoundCube data base
- *	@copyright	(c) 2008 - 2024 Florian Daeumling, Germany. All right reserved
+ *	@copyright	(c) 2008 - 2025 Florian Daeumling, Germany. All right reserved
  * 	@license 	LGPL-3.0-or-later
  */
 
@@ -1160,7 +1160,7 @@ class Contact {
 	 *	@param	- self::C_NEW=New; self::C_UPD=Update; self::C_DEL=Delete
 	 *	$return - true=Ok; false=Error
 	 */
-	private function _chkCat(string $rid, XML $xml = null, int $mod): bool {
+	private function _chkCat(string $rid, ?XML $xml = null, int $mod): bool {
 
 		if ($this->_cnf->getVar(Config::DBG_SCRIPT) != 'Document') {
 			Msg::InfoMsg($this->_cats, 'New category list');

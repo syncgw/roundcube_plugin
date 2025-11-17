@@ -3,7 +3,7 @@
 /*
  * sync*gw RoundCube Bundle
  *
- *	@copyright	(c) 2008 - 2024 Florian Daeumling, Germany. All right reserved
+ *	@copyright	(c) 2008 - 2025 Florian Daeumling, Germany. All right reserved
  * 	@license 	https://github.com/Toteph42/syncgw/blob/master/LICENSE
  */
 
