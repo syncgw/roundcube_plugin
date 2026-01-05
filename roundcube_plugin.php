@@ -6,7 +6,7 @@ use syncgw\lib\Config;
 /*
  * 	sync*gw RoundCube Bundle
  *
- *	@copyright	(c) 2008 - 2025 Florian Daeumling, Germany. All right reserved
+ *	@copyright	(c) 2008 - 2026 Florian Daeumling, Germany. All right reserved
  * 	@license 	LGPL-3.0-or-later
  */
 
@@ -84,10 +84,11 @@ class roundcube_plugin extends rcube_plugin {
         $prefs = isset($prefs['syncgw']) ? $prefs['syncgw'] : '';
 
         $cnf = Config::getInstance();
+
         if (!file_exists($path = $cnf->Path))
    		 	return;
 
-   		$enabled = @parse_ini_file($path);
+   		 $enabled = @parse_ini_file($path);
 
 		if ($enabled['Datastores'] & DataStore::MAIL) {
 

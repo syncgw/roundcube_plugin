@@ -6,7 +6,7 @@ declare(strict_types=1);
  *
  *	@package	sync*gw
  *	@subpackage	RoundCube data base
- *	@copyright	(c) 2008 - 2025 Florian Daeumling, Germany. All right reserved
+ *	@copyright	(c) 2008 - 2026 Florian Daeumling, Germany. All right reserved
  * 	@license 	LGPL-3.0-or-later
  */
 
@@ -389,7 +389,7 @@ class Contact {
 			}
 
 			// add external record
-			if (!($out = self::_add($parm)) || !self::_chkCat($out, $parm, self::C_NEW)) {
+			if (!($out = self::_add($parm)) || !self::_chkCat($out, self::C_NEW, $parm)) {
 
 				Log::getInstance()->logMsg(Log::WARN, 20312, $parm->getVar('Type') == DataStore::TYP_DATA ?
 						  'contact record' : 'address book');
@@ -455,7 +455,7 @@ class Contact {
 			}
 
 			// update external record
-			if (!($out = self::_upd($parm)) || !self::_chkCat($rid, $parm, self::C_UPD)) {
+			if (!($out = self::_upd($parm)) || !self::_chkCat($rid, self::C_UPD, $parm)) {
 
 				Log::getInstance()->logMsg(Log::WARN, 20313, substr($rid, 0, 1) == DataStore::TYP_DATA ?
 						  'contact record' : 'address book', $rid);
@@ -486,7 +486,7 @@ class Contact {
 			}
 
 			// delete external record
-			if (!self::_chkCat($parm, null, self::C_DEL) || !($out = self::_del($parm))) {
+			if (!self::_chkCat($parm, self::C_DEL, null) || !($out = self::_del($parm))) {
 
 				Log::getInstance()->logMsg(Log::WARN, 20314, substr($parm, 0, 1) == DataStore::TYP_DATA ?
 						  'contact record' : 'address book', $parm);
@@ -1156,11 +1156,11 @@ class Contact {
 	 * 	Warning: We cannot provide updates on folder!
 	 *
 	 *	@param 	- Record ID
-	 *	@param 	- Document
 	 *	@param	- self::C_NEW=New; self::C_UPD=Update; self::C_DEL=Delete
+	 *	@param 	- Document
 	 *	$return - true=Ok; false=Error
 	 */
-	private function _chkCat(string $rid, ?XML $xml = null, int $mod): bool {
+	private function _chkCat(string $rid, int $mod, ?XML $xml = null): bool {
 
 		if ($this->_cnf->getVar(Config::DBG_SCRIPT) != 'Document') {
 			Msg::InfoMsg($this->_cats, 'New category list');

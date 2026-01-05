@@ -28,7 +28,7 @@ To use this plugin, you need a functional [RoundCube](https://roundcube.net) ins
     }
    ```
 
-This script links `vendor/syncgw/core-bundle/src/sync.php` to `sync.php` which is the script used for synchronization and configuration of **sync•gw**.
+This script links `vendor/syncgw/core-bundle/src/sync.php` to `sync.php` or `public_html/sync.php` which is the script used for synchronization and configuration of **sync•gw**.
 
 **Installation**
 
