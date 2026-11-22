@@ -3,7 +3,7 @@
 	"type" : "roundcube-plugin",
 	"description" : "Select address books, calendars, task lists, notes and mail in RoundCube for synchronization with sync*gw.",
 	"homepage" : "https://github.com/syncgw/roundcube_plugin",
-	"license" : "https://www.gnu.org/licenses/gpl-3.0.en.html",
+	"license" : "GPL-3.0-or-later",
 	"repositories" : [{
 			"type" : "composer",
 			"url" : "http://plugins.roundcube.net"
@@ -27,7 +27,8 @@
 	],
 	"authors" : [{
 			"name" : "Florian Daeumling",
-			"role" : "Author"
+			"role" : "Author",
+			"email" : "syncgw@wb28.de"
 		}
 	],
 	"funding" : [{
@@ -36,9 +37,8 @@
 		}
 	],
 	"support" : {
-		"issues" : "https://github.com/syncgw/syncgw/issues",
-		"docs" : "https://github.com/syncgw/gui-bundle",
-		"email" : "syncgw@wb28.de"
+		"issues" : "https://github.com/syncgw/gui-bundle/issues",
+		"docs" : "https://github.com/syncgw/doc-bundle"
 	},
 	"require" : {
 		"php" : ">=8.1",
