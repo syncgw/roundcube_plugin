@@ -7,7 +7,7 @@ declare(strict_types=1);
  *	@package	sync*gw
  *	@subpackage	RoundCube data base
  *	@copyright	(c) 2008 - 2026 Florian Daeumling, Germany. All right reserved
- * 	@license 	LGPL-3.0-or-later
+ * 	@license 	https://www.gnu.org/licenses/gpl-3.0.en.html
  */
 
 namespace syncgw\interface\roundcube;

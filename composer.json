@@ -1,23 +1,12 @@
 {
 	"name" : "syncgw/roundcube_plugin",
+	"type" : "roundcube-plugin",
 	"description" : "Select address books, calendars, task lists, notes and mail in RoundCube for synchronization with sync*gw.",
-	"license" : "LGPL-3.0-or-later",
+	"homepage" : "https://github.com/syncgw/roundcube_plugin",
+	"license" : "https://www.gnu.org/licenses/gpl-3.0.en.html",
 	"repositories" : [{
 			"type" : "composer",
 			"url" : "http://plugins.roundcube.net"
-		}
-	],
-	"type" : "roundcube-plugin",
-	"homepage" : "https://github.com/syncgw/roundcube_plugin",
-	"authors" : [{
-			"name" : "Florian Däumling",
-			"homepage" : "https://github.com/toteph42",
-			"role" : "Developer"
-		}
-	],
-	"funding" : [{
-			"type" : "other",
-			"url" : "https://www.paypal.com/donate/?hosted_button_id=DS6VK49NAFHEQ"
 		}
 	],
 	"keywords" : [
@@ -36,6 +25,21 @@
 		"cell phone",
 		"roundcube"
 	],
+	"authors" : [{
+			"name" : "Florian Daeumling",
+			"role" : "Author"
+		}
+	],
+	"funding" : [{
+			"type" : "other",
+			"url" : "https://www.paypal.com/donate/?hosted_button_id=DS6VK49NAFHEQ"
+		}
+	],
+	"support" : {
+		"issues" : "https://github.com/syncgw/syncgw/issues",
+		"docs" : "https://github.com/syncgw/gui-bundle",
+		"email" : "syncgw@wb28.de"
+	},
 	"require" : {
 		"php" : ">=8.1",
 		"roundcube/plugin-installer" : "~0.3.5",
@@ -51,10 +55,5 @@
 			"min-version" : "1.6",
 			"sql-dir" : "SQL"
 		}
-	},
-	"support" : {
-		"issues" : "https://github.com/syncgw/syncgw/issues",
-		"source" : "https://github.com/syncgw/roundcube_plugin",
-		"docs" : "https://github.com/syncgw/roundcube_plugin"
 	}
 }
