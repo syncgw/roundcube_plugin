@@ -1,8 +1,8 @@
 # ![picture logo](https://github.com/syncgw/gui-bundle/blob/master/assets/syncgw.png "sync•gw") #
  
-![](https://img.shields.io/packagist/v/syncgw/roundcube-syncgw.svg)
-![](https://img.shields.io/packagist/l/syncgw/roundcube-syncgw.svg)
-![](https://img.shields.io/packagist/dt/syncgw/roundcube-syncgw.svg)
+![](https://img.shields.io/packagist/v/syncgw/roundcube_plugin.svg)
+![](https://img.shields.io/packagist/l/syncgw/roundcube_plugin.svg)
+![](https://img.shields.io/packagist/dt/syncgw/roundcube_plugin.svg)
  
 **sync•gw** is the one and only fully portable server software available providing synchronization service between nearly any mobile device and your web server.
 
